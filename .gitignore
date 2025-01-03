@@ -1,0 +1,5 @@
+/drivers
+.env
+.venv
+.vscode
+/scout_data
