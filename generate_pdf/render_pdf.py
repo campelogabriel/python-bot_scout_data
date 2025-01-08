@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
-from reportlab.lib.colors import black,white,gray,yellow
+from reportlab.lib.colors import black,white,gray,yellow,azure
 
 
 def round_image_with_border(image_path, output_path, radius=None, border_width=10):
@@ -40,37 +40,39 @@ def round_image_with_border(image_path, output_path, radius=None, border_width=1
     rounded_img.save(output_path, format="PNG")
 
 def centralizar_texto_area(canvas, texto, x_inicio, largura_area, y, fonte="Helvetica", tamanho_fonte=12):
-    # Definir a fonte e o tamanho
     canvas.setFont(fonte, tamanho_fonte)
 
-    # Obter a largura do texto
     largura_texto = canvas.stringWidth(texto, fonte, tamanho_fonte)
 
-    # Calcular a posição X para centralizar o texto dentro da largura da área
     x_centralizado = x_inicio + (largura_area - largura_texto) / 2
 
-    # Desenhar o texto na posição centralizada
     return canvas.drawString(x_centralizado, y, texto)
+
+
+
 
 x,y = A4
 pdf = canvas.Canvas("scout.pdf")
 pdf.setFillColor(black)
 pdf.rect(x=0,y= 0,height=y,width= x/4,stroke=0, fill=1)
+pdf.drawImage("team.png",120,y - 74,60,60, mask="auto")
 
-pdf.drawImage(image="imagem_arredondada.png",width=70,height=70,x=40,y=y - 100)
+
+
+
+pdf.drawImage(image="imagem_arredondada.png",width=70,height=70,x=40,y=y - 100,mask="auto")
 
 
 pdf.setFillColor(yellow)
 pdf.setFontSize(12)
 centralizar_texto_area(pdf,"Paulinho Paula",fonte="Helvetica-Bold",x_inicio=45,largura_area=60, y= y-130)
 
-pdf.setFont("Helvetica",10)
 pdf.setFillColor(white)
-pdf.drawString(x=38,y= y - 150,text="Meio Campo")
+centralizar_texto_area(pdf,"Meio-Campo",fonte="Helvetica",x_inicio=45,largura_area=60, y= y - 150,tamanho_fonte=10)
+
 
 
 pdf.setFontSize(9)
-
 pdf.setFillColor(gray)
 pdf.drawString(x=10,y= y - 190,text="Data Nasc")
 pdf.setFillColor(white)
@@ -93,13 +95,33 @@ pdf.drawString(x=80,y= y - 230,text="Nacionalidade")
 pdf.setFillColor(white)
 pdf.drawString(x=98,y= y - 245,text="BRA")
 
+pdf.setStrokeColor(white)
+pdf.line(0,y - 260,x/4,y - 260)
 
 centralizar_texto_area(pdf,"Última Partida",36,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
+centralizar_texto_area(pdf,"08/12/2024",36,67,y - 295,tamanho_fonte=8,fonte="Helvetica")
+
+
+name_mandante = "Cuiabá"
+name_visitante = "Vasco Da Gama"
+placar_mandante = "1"
+placar_visitante = "2"
 
 
 
+pdf.drawImage("cuiaba.png",18,y - 335,20,20, mask="auto")
+centralizar_texto_area(pdf,name_mandante,8,40,y - 350,tamanho_fonte=8,fonte="Helvetica")
+
+centralizar_texto_area(pdf,placar_mandante,38,50,y - 333,tamanho_fonte=16,fonte="Helvetica-Bold")
+centralizar_texto_area(pdf,"-",44,55,y - 332,tamanho_fonte=14,fonte="Helvetica-Bold")
+centralizar_texto_area(pdf,placar_visitante,52,60,y - 333,tamanho_fonte=16,fonte="Helvetica-Bold")
 
 
+pdf.drawImage("team.png",x / 4 - 45,y - 335,20,20, mask="auto")
+centralizar_texto_area(pdf,name_visitante,x_inicio=x / 4 - 50,largura_area=x / 4 - 120,y=y - 350,tamanho_fonte=8,fonte="Helvetica")
 
+    
+
+   
 
 pdf.save()
