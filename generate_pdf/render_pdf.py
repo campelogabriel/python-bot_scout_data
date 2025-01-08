@@ -98,8 +98,8 @@ pdf.drawString(x=98,y= y - 245,text="BRA")
 pdf.setStrokeColor(white)
 pdf.line(0,y - 260,x/4,y - 260)
 
-centralizar_texto_area(pdf,"Última Partida",36,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
-centralizar_texto_area(pdf,"08/12/2024",36,67,y - 295,tamanho_fonte=8,fonte="Helvetica")
+centralizar_texto_area(pdf,"Última Partida",40,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
+centralizar_texto_area(pdf,"08/12/2024",40,67,y - 295,tamanho_fonte=8,fonte="Helvetica")
 
 
 name_mandante = "Cuiabá"
@@ -121,6 +121,11 @@ pdf.drawImage("team.png",x / 4 - 45,y - 335,20,20, mask="auto")
 centralizar_texto_area(pdf,name_visitante,x_inicio=x / 4 - 50,largura_area=x / 4 - 120,y=y - 350,tamanho_fonte=8,fonte="Helvetica")
 
     
+pdf.setStrokeColor(white)
+pdf.line(0,y - 380,x/4,y - 380)
+pdf.setFont("Helvetica-Bold",10)
+pdf.drawString(55,y-400,"Posição")
+pdf.drawImage("soccer-field.png",13,y - 540,120,120, mask="auto")
 
    
 
