@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
-from reportlab.lib.colors import black,white,gray,yellow,gold,gainsboro,whitesmoke,salmon
+from reportlab.lib.colors import black,white,gray,yellow,gold,lightgrey,whitesmoke,salmon,dimgray
 
 
 def round_image_with_border(image_path, output_path, radius=None, border_width=10):
@@ -141,12 +141,21 @@ pdf.drawImage("images/soccer-field.png",13,y - 540,120,120, mask="auto")
 
 pdf.drawImage("camp_logo.png",x-40,y-45,30,30,mask='auto')
 pdf.setFillColor(black)
-centralizar_texto_area(pdf,"Brasileirão Série A 2024",220,300,y - 40,"Helvetica-Oblique",24)
+centralizar_texto_area(pdf,"Premier League 23/24",220,300,y - 40,"Courier-Bold",22)
 
 # PARTIDAS
    
 pdf.setFillColor(white)
 pdf.roundRect(180,y-240,160,140,5,stroke=0,fill=1)
+
+# SOMBREAMENTO
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=180,y=y-242,width=164,height=4,radius=3,stroke=0,fill=1)
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=340,y=y-242,width=4,height=151,radius=4,stroke=0,fill=1)
+
 
 pdf.drawImage("images/partidas.png",325,y-115,30,30,mask='auto')
 
@@ -162,7 +171,7 @@ pdf.setFont("Helvetica",9)
 pdf.drawString(190, y - 175,"Titular:")
 pdf.setFillColor(black)
 pdf.setFont("Helvetica-Bold",9)
-pdf.drawString(219, y - 175,"2")
+pdf.drawString(221, y - 175,"2")
 
 pdf.setFillColor(gray)
 pdf.setFont("Helvetica",9)
@@ -182,6 +191,14 @@ pdf.drawString(260, y - 201,"1230")
 
 pdf.setFillColor(white)
 pdf.roundRect(405,y-240,155,140,5,stroke=0,fill=1)
+
+# SOMBREAMENTO
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=405,y=y-242,width=160,height=4,radius=3,stroke=0,fill=1)
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=560,y=y-242,width=4,height=151,radius=4,stroke=0,fill=1)
 
 pdf.drawImage("images/gols.png",547,y-113,25,25,mask='auto')
 
@@ -234,6 +251,16 @@ pdf.drawString(485, y - 227,"0")
 pdf.setFillColor(white)
 pdf.roundRect(180,y-410,160,140,5,stroke=0,fill=1)
 
+# SOMBREAMENTO
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=180,y=y-410,width=164,height=4,radius=3,stroke=0,fill=1)
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=340,y=y-410,width=4,height=151,radius=4,stroke=0,fill=1)
+
+
+
 pdf.drawImage("images/assistencias.png",327,y-283,30,30,mask='auto')
 
 
@@ -284,6 +311,14 @@ pdf.drawString(293, y - 397,"27%")
 
 pdf.setFillColor(white)
 pdf.roundRect(405,y - 410,155,140,5,stroke=0,fill=1)
+
+# SOMBREAMENTO
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=405,y=y-410,width=160,height=4,radius=3,stroke=0,fill=1)
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=560,y=y-410,width=4,height=151,radius=4,stroke=0,fill=1)
 
 pdf.drawImage("images/desarmes.png",542,y-283,30,30,mask='auto')
 
@@ -336,6 +371,14 @@ pdf.drawString(518, y - 397,"90%")
 
 pdf.setFillColor(white)
 pdf.roundRect(180,y-580,160,140,5,stroke=0,fill=1)
+
+# SOMBREAMENTO
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=180,y=y-580,width=164,height=4,radius=3,stroke=0,fill=1)
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=340,y=y-580,width=4,height=151,radius=4,stroke=0,fill=1)
 
 pdf.drawImage("images/outros.png",327,y-450,20,20,mask='auto')
 
@@ -399,6 +442,14 @@ pdf.drawString(296, y - 562,"0")
 
 pdf.setFillColor(white)
 pdf.roundRect(405,y-580,160,140,5,stroke=0,fill=1)
+
+# SOMBREAMENTO
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=405,y=y-580,width=160,height=4,radius=3,stroke=0,fill=1)
+
+pdf.setFillColor(lightgrey)
+pdf.roundRect(x=560,y=y-580,width=4,height=151,radius=4,stroke=0,fill=1)
 
 pdf.drawImage("images/cartoes.png",545,y-457,30,30,mask='auto')
 
