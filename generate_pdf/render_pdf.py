@@ -77,23 +77,28 @@ pdf.setFont("Helvetica",9)
 pdf.setFillColor(gray)
 pdf.drawString(x=10,y= y - 190,text="Data Nasc")
 pdf.setFillColor(white)
-pdf.setFont("Helvetica",9)
+pdf.setFont("Helvetica-Bold",9)
 pdf.drawString(x=9,y= y - 205,text="08/01/1997")
 
 pdf.setFillColor(gray)
+pdf.setFont("Helvetica",9)
 pdf.drawString(x=80,y= y - 190,text="Pé Dominante")
 pdf.setFillColor(white)
-centralizar_texto_area(pdf,"Direito",60,95,y - 205,tamanho_fonte=9,fonte="Helvetica")
+centralizar_texto_area(pdf,"Direito",60,95,y - 205,tamanho_fonte=9,fonte="Helvetica-Bold")
 
 
 pdf.setFillColor(gray)
+pdf.setFont("Helvetica",9)
 pdf.drawString(x=17,y= y - 230,text="Altura")
 pdf.setFillColor(white)
+pdf.setFont("Helvetica-Bold",9)
 pdf.drawString(x=14,y= y - 245,text="178 cm")
 
 pdf.setFillColor(gray)
+pdf.setFont("Helvetica",9)
 pdf.drawString(x=80,y= y - 230,text="Nacionalidade")
 pdf.setFillColor(white)
+pdf.setFont("Helvetica-Bold",9)
 pdf.drawString(x=98,y= y - 245,text="BRA")
 
 pdf.setStrokeColor(white)
@@ -106,7 +111,7 @@ centralizar_texto_area(pdf,"08/12/2024",40,67,y - 295,tamanho_fonte=8,fonte="Hel
 name_mandante = "Cuiabá"
 name_visitante = "Vasco"
 placar_mandante = "1"
-placar_visitante = "2"
+placar_visitante = "3"
 
 
 
@@ -115,23 +120,35 @@ centralizar_texto_area(pdf,name_mandante,8,40,y - 350,tamanho_fonte=8,fonte="Hel
 
 centralizar_texto_area(pdf,placar_mandante,36,50,y - 333,tamanho_fonte=20,fonte="Helvetica-Bold")
 centralizar_texto_area(pdf,"-",44,55,y - 332,tamanho_fonte=14,fonte="Helvetica-Bold")
-centralizar_texto_area(pdf,placar_visitante,54,60,y - 333,tamanho_fonte=20,fonte="Helvetica-Bold")
+centralizar_texto_area(pdf,placar_visitante,52,60,y - 333,tamanho_fonte=20,fonte="Helvetica-Bold")
 
 
 pdf.drawImage("team.png",x / 4 - 45,y - 335,20,20, mask="auto")
 centralizar_texto_area(pdf,name_visitante,x_inicio=x / 4 - 50,largura_area=x / 4 - 120,y=y - 350,tamanho_fonte=8,fonte="Helvetica")
 
     
+
 pdf.setStrokeColor(white)
 pdf.line(0,y - 380,x/4,y - 380)
 pdf.setFont("Helvetica-Bold",10)
 pdf.drawString(53,y-400,"Posição")
-pdf.drawImage("soccer-field.png",13,y - 540,120,120, mask="auto")
+pdf.drawImage("images/soccer-field.png",13,y - 540,120,120, mask="auto")
+
+
+#PARTE DO SCOUT
+
+#TITULO
+
+pdf.drawImage("camp_logo.png",x-40,y-45,30,30,mask='auto')
+pdf.setFillColor(black)
+centralizar_texto_area(pdf,"Brasileirão Série A 2024",220,300,y - 40,"Helvetica-Oblique",24)
 
 # PARTIDAS
    
 pdf.setFillColor(white)
 pdf.roundRect(180,y-240,160,140,5,stroke=0,fill=1)
+
+pdf.drawImage("images/partidas.png",325,y-115,30,30,mask='auto')
 
 pdf.setFillColor(black)
 pdf.setFont("Courier-Bold",12)
@@ -144,24 +161,30 @@ pdf.setFillColor(gray)
 pdf.setFont("Helvetica",9)
 pdf.drawString(190, y - 175,"Titular:")
 pdf.setFillColor(black)
-pdf.drawString(228, y - 175,"2")
+pdf.setFont("Helvetica-Bold",9)
+pdf.drawString(219, y - 175,"2")
 
 pdf.setFillColor(gray)
 pdf.setFont("Helvetica",9)
 pdf.drawString(190, y - 188,"Mins por jogo:")
 pdf.setFillColor(black)
-pdf.drawString(263, y - 188,"75")
+pdf.setFont("Helvetica-Bold",9)
+pdf.drawString(249, y - 188,"75")
 
 pdf.setFillColor(gray)
 pdf.setFont("Helvetica",9)
 pdf.drawString(190, y - 201,"Total de minutos:")
 pdf.setFillColor(black)
-pdf.drawString(278, y - 201,"1230")
+pdf.setFont("Helvetica-Bold",9)
+pdf.drawString(260, y - 201,"1230")
 
 # Gols
 
 pdf.setFillColor(white)
 pdf.roundRect(405,y-240,155,140,5,stroke=0,fill=1)
+
+pdf.drawImage("images/gols.png",547,y-113,25,25,mask='auto')
+
 
 
 pdf.setFillColor(black)
@@ -211,6 +234,9 @@ pdf.drawString(485, y - 227,"0")
 pdf.setFillColor(white)
 pdf.roundRect(180,y-410,160,140,5,stroke=0,fill=1)
 
+pdf.drawImage("images/assistencias.png",327,y-283,30,30,mask='auto')
+
+
 pdf.setFillColor(black)
 pdf.setFont("Courier-Bold",12)
 pdf.drawString(190, y - 290,"Assistências")
@@ -258,6 +284,8 @@ pdf.drawString(293, y - 397,"27%")
 
 pdf.setFillColor(white)
 pdf.roundRect(405,y - 410,155,140,5,stroke=0,fill=1)
+
+pdf.drawImage("images/desarmes.png",542,y-283,30,30,mask='auto')
 
 
 pdf.setFillColor(black)
@@ -308,6 +336,9 @@ pdf.drawString(518, y - 397,"90%")
 
 pdf.setFillColor(white)
 pdf.roundRect(180,y-580,160,140,5,stroke=0,fill=1)
+
+pdf.drawImage("images/outros.png",327,y-450,20,20,mask='auto')
+
 
 pdf.setFillColor(black)
 pdf.setFont("Courier-Bold",12)
@@ -364,8 +395,38 @@ pdf.setFont("Helvetica-Bold",9)
 pdf.drawString(296, y - 562,"0")
 
 
+# CARTOES
+
+pdf.setFillColor(white)
+pdf.roundRect(405,y-580,160,140,5,stroke=0,fill=1)
+
+pdf.drawImage("images/cartoes.png",545,y-457,30,30,mask='auto')
 
 
+pdf.setFillColor(black)
+pdf.setFont("Courier-Bold",12)
+pdf.drawString(415, y - 460,"Cartões")
+
+pdf.setFillColor(gray)
+pdf.setFont("Helvetica",9)
+pdf.drawString(415, y - 485,"Cartões Amarelos:")
+pdf.setFillColor(black)
+pdf.setFont("Helvetica-Bold",9)
+pdf.drawString(492, y - 485,"1")
+
+pdf.setFillColor(gray)
+pdf.setFont("Helvetica",9)
+pdf.drawString(415, y - 498,"Amarelo + Vermelho:")
+pdf.setFillColor(black)
+pdf.setFont("Helvetica-Bold",9)
+pdf.drawString(502, y - 498,"0")
+
+pdf.setFillColor(gray)
+pdf.setFont("Helvetica",9)
+pdf.drawString(415, y - 511,"Cartões Vermelhos:")
+pdf.setFillColor(black)
+pdf.setFont("Helvetica-Bold",9)
+pdf.drawString(498, y - 511,"0")
 
 
 pdf.save()
