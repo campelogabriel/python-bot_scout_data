@@ -11,6 +11,8 @@ def get_positions(pos,pdf,y):
         return get_DM(pdf,y)
     if pos == 'DR':
         return get_DR(pdf,y)
+    if pos == 'DC':
+        return get_CB(pdf,y)
     if pos == 'ML':
         return get_ML(pdf,y)
     if pos == 'GK':
