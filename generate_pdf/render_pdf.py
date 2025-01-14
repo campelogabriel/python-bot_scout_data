@@ -60,7 +60,7 @@ def create_pdf(obj):
     
     
     try:
-        pdf.drawImage(obj['img_team'],119.5,y - 74,60,60, mask="auto")
+        pdf.drawImage(obj['img_team'],119,y - 74,60,60, mask="auto")
     except Exception:
         ...
 
@@ -71,7 +71,7 @@ def create_pdf(obj):
 
 
     pdf.setFillColor(gold)
-    centralizar_texto_area(pdf,obj['Name'],fonte="Helvetica-Bold",x_inicio=45,largura_area=60, y= y-130)
+    centralizar_texto_area(pdf,obj['Name'],fonte="Helvetica-Bold",x_inicio=44,largura_area=60, y= y-130)
 
     pdf.setFillColor(white)
     centralizar_texto_area(pdf,position_convert(obj['pos']),fonte="Helvetica",x_inicio=45,largura_area=60, y= y - 150,tamanho_fonte=10)
@@ -368,7 +368,7 @@ def create_pdf(obj):
 
     pdf.setFillColor(black)
     pdf.setFont("Courier-Bold",12)
-    pdf.drawString(190, y - 460,"Outros")
+    pdf.drawString(190, y - 460,"Outros I")
 
     pdf.setFillColor(gray)
     pdf.setFont("Helvetica",9)
@@ -415,48 +415,74 @@ def create_pdf(obj):
 
     pdf.setFillColor(gray)
     pdf.setFont("Helvetica",9)
-    pdf.drawString(190, y - 562,"Erros que levaram ao gol:")
+    pdf.drawString(190, y - 561,"Erros que levaram ao gol:")
     pdf.setFillColor(black)
     pdf.setFont("Helvetica-Bold",9)
-    pdf.drawString(296, y - 562,obj['Error_led_to_goal'])
+    pdf.drawString(296, y - 561,obj['Error_led_to_goal'])
 
 
-    # CARTOES
+    # outros II
     pdf.setFillColor(lightgray)
     pdf.roundRect(408,y-583,169.5,140,8,stroke=0,fill=1)
     pdf.setFillColor(white)
     pdf.roundRect(405,y-580,170,140,5,stroke=1,fill=1)
 
 
-    pdf.drawImage("images/cartoes.png",561,y-457,30,30,mask='auto')
+    pdf.drawImage("images/outros.png",563,y-452,20,20,mask='auto')
 
 
     pdf.setFillColor(black)
     pdf.setFont("Courier-Bold",12)
-    pdf.drawString(415, y - 460,"Cartões")
+    pdf.drawString(415, y - 460,"Outros II")
 
     pdf.setFillColor(gray)
     pdf.setFont("Helvetica",9)
-    pdf.drawString(415, y - 485,"Cartões Amarelos:")
+    pdf.drawString(415, y - 485,"Passes Chaves por jogo:")
     pdf.setFillColor(black)
     pdf.setFont("Helvetica-Bold",9)
-    pdf.drawString(492, y - 485,obj['Yellow'])
+    pdf.drawString(518, y - 485,obj['Key_passes'])
+
+    
+    pdf.setFillColor(gray)
+    pdf.setFont("Helvetica",9)
+    pdf.drawString(415, y -498,"Grande Chances Perdidas:")
+    pdf.setFillColor(black)
+    pdf.setFont("Helvetica-Bold",9)
+    pdf.drawString(526, y -498,obj['Big_chances_missed'])
+
+    
+    pdf.setFillColor(gray)
+    pdf.setFont("Helvetica",9)
+    pdf.drawString(415, y - 511,"Toques na bola por jogo:")
+    pdf.setFillColor(black)
+    pdf.setFont("Helvetica-Bold",9)
+    pdf.drawString(518, y - 511,obj['Touches'])
+
 
     pdf.setFillColor(gray)
     pdf.setFont("Helvetica",9)
-    pdf.drawString(415, y - 498,"Amarelo + Vermelho:")
+    pdf.drawString(415, y - 524,"Cartões Amarelos:")
     pdf.setFillColor(black)
     pdf.setFont("Helvetica-Bold",9)
-    pdf.drawString(502, y - 498,obj['Yellow-Red'])
+    pdf.drawString(492, y - 524,obj['Yellow'])
+
 
     pdf.setFillColor(gray)
     pdf.setFont("Helvetica",9)
-    pdf.drawString(415, y - 511,"Cartões Vermelhos:")
+    pdf.drawString(415, y - 537,"Amarelo + Vermelho:")
     pdf.setFillColor(black)
     pdf.setFont("Helvetica-Bold",9)
-    pdf.drawString(498, y - 511,obj['Red_cards'])
+    pdf.drawString(501, y - 537,obj['Yellow-Red'])
+
+    pdf.setFillColor(gray)
+    pdf.setFont("Helvetica",9)
+    pdf.drawString(415, y - 550,"Cartões Vermelhos:")
+    pdf.setFillColor(black)
+    pdf.setFont("Helvetica-Bold",9)
+    pdf.drawString(497, y - 550,obj['Red_cards'])
 
     pdf.setFillColor(gray)
     pdf.setFont("Helvetica-Bold",9)
+    pdf.drawString(x - 150,22,"*N/A: Sem Dados")
     pdf.drawString(x - 150,10,"*Dados obtidos no Sofascore")
     pdf.save()
