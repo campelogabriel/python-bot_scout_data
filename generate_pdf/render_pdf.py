@@ -74,7 +74,7 @@ def create_pdf(obj):
     centralizar_texto_area(pdf,obj['Name'],fonte="Helvetica-Bold",x_inicio=44,largura_area=60, y= y-130)
 
     pdf.setFillColor(white)
-    centralizar_texto_area(pdf,position_convert(obj['pos']),fonte="Helvetica",x_inicio=45,largura_area=60, y= y - 150,tamanho_fonte=10)
+    centralizar_texto_area(pdf,position_convert(obj['pos']),fonte="Helvetica",x_inicio=44.8,largura_area=60, y= y - 150,tamanho_fonte=10)
     
 
 
@@ -112,21 +112,21 @@ def create_pdf(obj):
     pdf.line(0,y - 260,x/4,y - 260)
 
     if 'placar_mandante' in obj:
-        centralizar_texto_area(pdf,"Última Partida",40,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
+        centralizar_texto_area(pdf,"Próxima Partida" if "Tomorrow" in obj['data'] else "Última Partida",40,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
         centralizar_texto_area(pdf,obj['data'] if obj['data'] else "Em Andamento",39,67,y - 295,tamanho_fonte=8,fonte="Helvetica")
     else:
-        centralizar_texto_area(pdf,"Próxima Partida",40,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
+        centralizar_texto_area(pdf,obj['data'],40,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
 
 
 
-    pdf.drawImage(obj['escudo_mandante'],18,y - 335,20,20, mask="auto")
-    centralizar_texto_area(pdf,obj['nome_mandante'],8,40,y - 350,tamanho_fonte=8,fonte="Helvetica")
+    pdf.drawImage(obj['escudo_mandante'],26,y - 335,20,20, mask="auto")
+    centralizar_texto_area(pdf,obj['nome_mandante'],15,40,y - 350,tamanho_fonte=8,fonte="Helvetica")
 
     
     if 'placar_mandante' in obj:
-        centralizar_texto_area(pdf,obj['placar_mandante'],37,50,y - 333,tamanho_fonte=20,fonte="Helvetica-Bold")
-        centralizar_texto_area(pdf,"-",44,55,y - 332,tamanho_fonte=14,fonte="Helvetica-Bold")
-        centralizar_texto_area(pdf,obj['placar_visitante'],52,60,y - 333,tamanho_fonte=20,fonte="Helvetica-Bold")
+        centralizar_texto_area(pdf,obj['placar_mandante'] if obj['placar_mandante'] != "N/A" else "",40,50,y - 333,tamanho_fonte=20,fonte="Helvetica-Bold")
+        centralizar_texto_area(pdf,"-",47.6,55,y - 332,tamanho_fonte=14,fonte="Helvetica-Bold")
+        centralizar_texto_area(pdf,obj['placar_visitante'] if obj['placar_visitante'] != "N/A" else "",55,60,y - 333,tamanho_fonte=20,fonte="Helvetica-Bold")
     else:
         centralizar_texto_area(pdf,obj['data'].split(" ")[0],40,67,y - 295,tamanho_fonte=9,fonte="Helvetica")
         centralizar_texto_area(pdf,obj['data'].split(" ")[1],44,55,y - 330,tamanho_fonte=12,fonte="Helvetica-Bold")
@@ -452,11 +452,11 @@ def create_pdf(obj):
 
     
     pdf.setFillColor(gray)
-    pdf.setFont("Helvetica",9)
-    pdf.drawString(415, y - 511,"Toques na bola por jogo:")
+    pdf.setFont("Helvetica",9)   
+    pdf.drawString(415, y - 511,"Ações com a bola por jogo:")
     pdf.setFillColor(black)
     pdf.setFont("Helvetica-Bold",9)
-    pdf.drawString(518, y - 511,obj['Touches'])
+    pdf.drawString(526, y - 511,obj['Touches'])
 
 
     pdf.setFillColor(gray)
