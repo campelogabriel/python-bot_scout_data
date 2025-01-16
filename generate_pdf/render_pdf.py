@@ -113,7 +113,7 @@ def create_pdf(obj):
 
     if 'placar_mandante' in obj:
         centralizar_texto_area(pdf,"Próxima Partida" if "Tomorrow" in obj['data'] else "Última Partida",40,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
-        centralizar_texto_area(pdf,obj['data'] if obj['data'] else "Em Andamento",39,67,y - 295,tamanho_fonte=8,fonte="Helvetica")
+        centralizar_texto_area(pdf,obj['data'] if obj['data'] and ":" not in obj['data'] else "Em Andamento",39,67,y - 295,tamanho_fonte=8,fonte="Helvetica")
     else:
         centralizar_texto_area(pdf,obj['data'],40,67,y - 280,tamanho_fonte=10,fonte="Helvetica-Bold")
 
