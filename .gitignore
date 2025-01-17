@@ -3,3 +3,4 @@
 .venv
 .vscode
 /scout_data
+__pycache__
