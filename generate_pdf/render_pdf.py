@@ -74,7 +74,7 @@ def create_pdf(obj):
     centralizar_texto_area(pdf,obj['Name'],fonte="Helvetica-Bold",x_inicio=44,largura_area=60, y= y-130)
 
     pdf.setFillColor(white)
-    centralizar_texto_area(pdf,position_convert(obj['pos']),fonte="Helvetica",x_inicio=44.8,largura_area=60, y= y - 150,tamanho_fonte=10)
+    centralizar_texto_area(pdf,f"{obj['idade'].split(" ")[0]} anos",fonte="Helvetica",x_inicio=44.8,largura_area=60, y= y - 150,tamanho_fonte=10)
     
 
 

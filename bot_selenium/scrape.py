@@ -7,7 +7,6 @@ from selenium.webdriver.chrome.options import Options
 from .find_similar_string import find_similar_string
 from time import sleep
 import re
-import json
 
 empty_obj = ['liga', 'temp', 'Total_played', 'Started', 'Minutes_per_game', 'Total_minutes_played', 'Team_of_the_week', 'Goals', 'Expected_Goals_(xG)', 'Scoring_frequency', 'Goals_per_game', 'Shots_per_game', 'Shots_on_target_per_game', 'Big_chances_missed', 'Goal_conversion', 'Penalty_goals', 'Penalty_conversion', 'Free_kick_goals', 'Free_kick_conversion', 'Goals_from_inside_the_box', 'Goals_from_outside_the_box', 'Headed_goals', 'Left_foot_goals', 'Right_foot_goals', 'Penalty_won', 'Assists', 'Expected_Assists_(xA)', 'Touches', 'Big_chances_created', 'Key_passes', 'Accurate_per_game', 'Acc._own_half', 'Acc._opposition_half', 'Acc._long_balls', 'Acc._chipped_passes', 'Acc._crosses', 'Interceptions_per_game', 'Tackles_per_game', 'Possession_won', 'Balls_recovered_per_game', 'Dribbled_past_per_game', 'Clearances_per_game', 'Error_led_to_shot', 'Error_led_to_goal', 'Penalties_committed', 'Succ._dribbles', 'Total_duels_won', 'Ground_duels_won', 'Aerial_duels_won', 'Possession_lost', 'Fouls', 'Was_fouled', 'Offsides', 'Yellow', 'Yellow-Red', 'Red_cards', 'nacionalidade', 'nascimento', 'altura', 'pé', 'pos', 'Name', 'name_team', 'img_team', 'profile', 'data', 'escudo_mandante', 'escudo_visitante', 'placar_mandante', 'placar_visitante', 'nome_mandante', 'nome_visitante', 'positions']
 
@@ -17,9 +16,6 @@ def replace_spaces_in_keys(obj):
         new_key = re.sub(r'\s+', '_', key)
         new_obj[new_key] = value
     return new_obj
-
-with open("ligas.json","r",encoding='utf-8') as file:
-    ligas_do_mundo = json.loads(file.read())
 
 def scrape_data(data,competicao=None):
 
@@ -205,6 +201,7 @@ def scrape_data(data,competicao=None):
 
     player_attributes['bandeira'] = player_element_status[0].find_element(By.TAG_NAME,"img").get_attribute("src")
     player_attributes['nacionalidade'] = player_element_status[0].text.split("\n")[1]
+    player_attributes['idade'] = player_element_status[1].text.split("\n")[1]
     player_attributes['nascimento'] = player_element_status[1].text.split("\n")[0]
     player_attributes['altura'] = player_element_status[2].text.split("\n")[1].split(" ")[0]
     player_attributes['pé'] = player_element_status[3].text.split("\n")[1]
